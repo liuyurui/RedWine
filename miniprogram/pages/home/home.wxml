@@ -1,0 +1,29 @@
+<!--miniprogram/pages/home/home.wxml-->
+<view class="container">
+  <!--banner-->
+  <swiper class='banner' autoplay='{{autoplay}}' circular='true'>
+    <block wx:for='{{banners}}'>
+      <swiper-item>
+        <image src='{{item.img}}' data-src='{{item}}' mode='aspectFill' bindtap='goProductType'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!--商品分类区-->
+  <view id='classify-area'>
+    <text id='classify-desc'>贵族之选，法国精酿</text>
+    <block id='classify-block' wx:for='{{classifies}}'>
+      <view id='classify' bindtap='goProductType' data-src='{{item}}'>
+        <image id='classify-image' src='{{item.img}}'></image>
+        <text>{{item.desc}}</text>
+      </view>
+    </block>
+
+    <!--头像-->
+    <view id='user-info'>
+      <image class='portrait' src='{{avatarUrl}}'></image>
+      <button wx:if="{{nickName != ''}}" hover-class='none'>{{nickName}}</button>
+      <button wx:if="{{nickName == ''}}" open-type='getUserInfo' bindgetuserinfo='onGetUserInfo' hover-class='none'>登录</button>
+    </view>
+  </view>
+</view>
