@@ -21,8 +21,8 @@
 
     <!--头像-->
     <view id='user-info'>
-      <image class='portrait' src='{{avatarUrl}}'></image>
-      <button wx:if="{{nickName != ''}}" hover-class='none'>{{nickName}}</button>
+      <image class='portrait' src='{{avatarUrl}}' bindtap='goMy'></image>
+      <button wx:if="{{nickName != ''}}" hover-class='none' bindtap='goMy'>{{nickName}}</button>
       <button wx:if="{{nickName == ''}}" open-type='getUserInfo' bindgetuserinfo='onGetUserInfo' hover-class='none'>登录</button>
     </view>
   </view>
