@@ -1,5 +1,5 @@
 // miniprogram/pages/classify/classify.js
-var allProducts
+var allProducts, vtotalNum, vtotalMoney
 
 Page({
 
@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    totalNum: 0,
+    totalMoney: 0
   },
 
   /**
@@ -89,9 +90,19 @@ Page({
     console.log('plus')
     console.log(options)
     var index = options.currentTarget.dataset.src
-    allProducts[index].buy_num = parseInt(allProducts[index].buy_num) + 1
+    allProducts[index].buy_num = allProducts[index].buy_num + 1
+
+    index = 0
+    vtotalNum = 0
+    vtotalMoney = 0
+    for (index in allProducts) {
+      vtotalNum += allProducts[index].buy_num
+      vtotalMoney += allProducts[index].buy_num * allProducts[index].prize
+    }
     this.setData({
-      products: allProducts
+      products: allProducts,
+      totalNum: vtotalNum,
+      totalMoney: vtotalMoney
     })
   },
 
@@ -101,8 +112,18 @@ Page({
     var index = options.currentTarget.dataset.src
     if (allProducts[index].buy_num > 0) {
       allProducts[index].buy_num = parseInt(allProducts[index].buy_num) - 1
+
+      index = 0
+      vtotalNum = 0
+      vtotalMoney = 0
+      for (index in allProducts) {
+        vtotalNum += allProducts[index].buy_num
+        vtotalMoney += allProducts[index].buy_num * allProducts[index].prize
+      }
       this.setData({
-        products: allProducts
+        products: allProducts,
+        totalNum: vtotalNum,
+        totalMoney: vtotalMoney
       })
     }
   }

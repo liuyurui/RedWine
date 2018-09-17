@@ -1,18 +1,18 @@
 /* miniprogram/pages/classify/classify.wxss */
 
-#gift-area {
+.gift-area {
   display: flex;
   flex-direction: row;
   margin-left: 60rpx;
   margin-top: 48rpx;
 }
 
-#gift-icon {
+.gift-icon {
   width: 42rpx;
   height: 42rpx;
 }
 
-#gift-desc {
+.gift-desc {
   font-size: 32rpx;
   color: #555555;
   margin-left: 12rpx;
@@ -48,6 +48,8 @@
   font-size: 30rpx;
   color: #333333;
   margin-left: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
 #product-prize {
@@ -56,6 +58,8 @@
   float: right;
   font-size: 32rpx;
   color: #000000;
+  height: 60rpx;
+  line-height: 60rpx;
 }
 
 #product-area {
@@ -114,8 +118,47 @@
 }
 
 .buy-num {
+  position: relative;
   float: right;
-  top: -5rpx;
-  right: -5rpx;
+  /* bottom: 380rpx; */
+  top: 30rpx;
+  right: -10rpx;
+  min-width: 30rpx;
   background-color: #06bd04;
+  padding: 10rpx;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.buy-now {
+  position: relative;
+  float: right;
+  right: 30rpx;
+  width: 200rpx;
+  height: 90rpx;
+  top: 25rpx;
+  font-size: 36rpx;
+}
+
+.total-num {
+  color: #888888;
+  font-size: 26rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.total-money {
+  color: black;
+  font-size: 30rpx;
+  margin-left: 30rpx;
 }

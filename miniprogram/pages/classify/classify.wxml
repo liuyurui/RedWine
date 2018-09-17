@@ -1,33 +1,42 @@
 <!--miniprogram/pages/classify/classify.wxml-->
 <view>
-  <view id='gift-area'>
-    <image id='gift-icon' src='/images/gift.png'></image>
-    <text id='gift-desc'>选择商品</text>
+  <view class='gift-area'>
+    <image class='gift-icon' src='/images/gift.png'></image>
+    <text class='gift-desc'>选择商品</text>
   </view>
 
   <!--商品区-->
   <view id='product-area'>
     <block wx:for='{{products}}'>
-      <view class="product {{item.buy_num > 0 ? 'highlight' : ''}}" data-src='{{item}}'>
-        <image id='product-image' src='{{item.img}}'></image>
-        <view id='product-info'>
-          <text id='product-name'>{{item.product_name}}</text>
-          <text id='product-prize'>{{item.prize}}元</text>
+      <view>
+      <view class="buy-num {{item.buy_num > 0 ? 'visible' : ''}}">{{item.buy_num}}</view>
+        <view class="product {{item.buy_num > 0 ? 'highlight' : ''}}" data-src='{{item}}'>
+          <image id='product-image' src='{{item.img}}'></image>
+          <view id='product-info'>
+            <text id='product-name'>{{item.product_name}}</text>
+            <text id='product-prize'>{{item.prize}}元</text>
+          </view>
+          <view class='hdivider'></view>
+          <view id='product-sell'>
+            <view class="minus {{item.buy_num > 0 ? '' : 'gray'}}" bindtap='minus' data-src='{{index}}'>-</view>
+            <view class='vdivider'></view>
+            <view id='plus' bindtap='plus' data-src='{{index}}'>+</view>
+          </view> 
         </view>
-        <view class='hdivider'></view>
-        <view id='product-sell'>
-          <view class="minus {{item.buy_num > 0 ? '' : 'gray'}}" bindtap='minus' data-src='{{index}}'>-</view>
-          <view class='vdivider'></view>
-          <view id='plus' bindtap='plus' data-src='{{index}}'>+</view>
-        </view>
-
-        <view class='buy-num'>{{item.buy_num}}</view>
       </view>
     </block>
   </view>
 
+  <view class='gift-area'>
+    <image class='gift-icon' src='/images/addr.png'></image>
+    <view class='gift-desc'>选择收货地址</view>
+  </view>
+
   <!--底部工具条-->
   <view id='footer'>
+  <button class='buy-now'>购买</button>
     <view class='hdivider'></view>
+    <view class='total-num'>共{{totalNum}}件</view>
+    <view class='total-money'>￥{{totalMoney}}元</view>
   </view>
 </view>
