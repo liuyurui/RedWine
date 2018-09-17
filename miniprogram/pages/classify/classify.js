@@ -1,18 +1,39 @@
 // miniprogram/pages/classify/classify.js
+var allProducts
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    
+    wx.showNavigationBarLoading()
+    var that = this
+    //请求类型产品
+    wx.cloud.callFunction({
+      name: 'getClassify',
+      data: {
+        productType: options.product_type
+      },
+      complete: res => {
+        console.log(res)
+        that.setData({
+          products: res.result.data
+        })
+        allProducts = res.result.data
 
+        wx.hideNavigationBarLoading()
+      }
+    })
   },
 
   /**
@@ -62,5 +83,27 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  plus: function(options) {
+    console.log('plus')
+    console.log(options)
+    var index = options.currentTarget.dataset.src
+    allProducts[index].buy_num = parseInt(allProducts[index].buy_num) + 1
+    this.setData({
+      products: allProducts
+    })
+  },
+
+  minus: function(options) {
+    console.log("minus")
+    console.log(options)
+    var index = options.currentTarget.dataset.src
+    if (allProducts[index].buy_num > 0) {
+      allProducts[index].buy_num = parseInt(allProducts[index].buy_num) - 1
+      this.setData({
+        products: allProducts
+      })
+    }
   }
 })
