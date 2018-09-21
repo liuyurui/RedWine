@@ -3,8 +3,6 @@
   "pages": [
     "pages/home/home",
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
     "pages/classify/classify",
     "pages/my/my",
     "pages/manageAddr/manageAddr",
