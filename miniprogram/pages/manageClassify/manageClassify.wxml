@@ -13,5 +13,5 @@
     </view>
   </block>
 
-  <view class='footer' bindtap='goNewAddr'>新增商品分类</view>
+  <view class='footer' bindtap='goNewClassify'>新增商品分类</view>
 </view>

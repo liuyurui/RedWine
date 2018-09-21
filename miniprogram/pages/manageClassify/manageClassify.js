@@ -57,10 +57,14 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goNewClassify: function() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original']	,
+      sourceType: ['album'],
+      success: function(res) {
+        console.log(res)
+      },
+    })
   }
 })
