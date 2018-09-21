@@ -1,2 +1,45 @@
 <!--miniprogram/pages/my/my.wxml-->
-<text>miniprogram/pages/my/my.wxml</text>
+<view class='container'>
+  <view class='top-area'>
+    <image class='portrait' src='{{avatarUrl}}'></image>
+    <text class='person-name'>{{nickName}}</text>
+  </view>
+
+  <view class='order-title-area'>
+    <view class='order-indicator'></view>
+    <view class='order-title'>常用功能</view>
+  </view>
+  <view class='fun-container'>
+    <view bindtap='goAddrManage'>
+      <image src='/images/addr.png'></image>
+      <text>收货地址</text>
+    </view>
+    <view bindtap='goBuyHistory'>
+      <image src='/images/order.png'></image>
+      <text>购买历史</text>
+    </view>
+  </view>
+
+  <view class="order-title-area {{manager != 0 ? 'visible' : 'hidden'}}">
+    <view class='order-indicator'></view>
+    <view class='order-title'>管理员功能</view>
+  </view>
+  <view class="fun-container {{manager != 0 ? 'visible' : 'hidden'}}">
+    <view>
+      <image src='/images/order.png'></image>
+      <text>订单</text>
+    </view>
+    <view bindtap='goManageClassify'>
+      <image src='/images/classify.png'></image>
+      <text>商品分类</text>
+    </view>
+    <view>
+      <image src='/images/gift.png'></image>
+      <text>商品</text>
+    </view>
+    <view>
+      <image src='/images/ad.png'></image>
+      <text>首页广告</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<!--miniprogram/pages/editAddr/editAddr.wxml-->
+<view class='container'>
+  <view class="line {{receiverFocused ? 'focused' : ''}}">
+    <text class='left'>收货人</text>
+    <input placeholder='姓名' bindinput='onReceiverInput' value='{{sReceiver}}' bindfocus='onReceiverFocus' bindblur='onReceiverBlur'></input>
+  </view>
+
+  <view class="line {{phoneFocused ? 'focused' : ''}}">
+    <text class='left'>手机号码</text>
+    <input placeholder='11位手机号' bindinput='onPhoneInput' value='{{sPhone}}' bindfocus='onPhoneFocus' bindblur='onPhoneBlur'></input>
+  </view>
+
+  <view class='line'>
+    <text class='left'>地区信息</text>
+    <picker mode='region' value='{{sRegion}}' bindchange='onRegionInput'>
+      <!-- <view>{{regionInfo}}</view> -->
+      <input placeholder='地区信息' disabled='true' value='{{regionInfo}}'></input>
+    </picker>
+  </view>
+
+  <view class="line {{addrFocused ? 'focused' : ''}}">
+    <text class='left'>详细地址</text>
+    <input placeholder='街道门牌信息' bindinput='onAddrInput' value='{{sAddr}}' bindfocus='onAddrFocus' bindblur='onAddrBlur'></input>
+  </view>
+
+  <view class="line {{postalFocused ? 'focused' : ''}}">
+    <text class='left'>邮政编码</text>
+    <input placeholder='邮政编码' bindinput='onPostalInput' value='{{sPostal}}' bindfocus='onPostalFocus' bindblur='onPostalBlur'></input>
+  </view>
+
+  <view class='footer' bindtap='submitAddr'>保存</view>
+</view>

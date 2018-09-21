@@ -1,1 +1,74 @@
 /* miniprogram/pages/my/my.wxss */
+.top-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 340rpx;
+  background-color: #800080;
+}
+.portrait {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-top: 90rpx;
+  box-sizing: border-box;
+}
+.person-name {
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 32rpx;
+  white-space: nowrap;
+  margin-top: 16rpx;
+}
+
+.order-title-area {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-left: 20rpx;
+  height: 30rpx;
+  margin-top: 30rpx;
+}
+
+.order-title-area .order-indicator {
+  width: 6rpx;
+  height: 30rpx;
+  margin-left: 20rpx; 
+  /* background-color: #9F79EE; */
+  background-color: #800080;
+}
+.order-title-area .order-title {
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin-left: 10rpx; 
+}
+
+.fun-container {
+  display: flex;
+  align-content: stretch;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  width: 100%;
+}
+.fun-container view {
+  width: 150rpx;
+  text-align: center;
+}
+.fun-container image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.fun-container text {
+  display: block;
+  font-size: 24rpx;
+  color: #707070;
+  margin-top: -10rpx;
+}
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}

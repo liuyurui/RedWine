@@ -9,3 +9,17 @@ page {
   align-items: center;
   box-sizing: border-box;
 }
+
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/*
+绿色：#1aad19
+#绿色按下：#179b16
+#绿色背景按下文字颜色：#a2d7a2
+*/

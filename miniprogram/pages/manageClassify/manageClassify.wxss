@@ -1,0 +1,18 @@
+/* miniprogram/pages/manageClassify/manageClassify.wxss */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #1aad19;
+  line-height: 100rpx;
+  color: white;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.footer:active {
+  background-color: #179b16;
+  color: #a2d7a2;
+}

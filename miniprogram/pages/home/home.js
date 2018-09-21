@@ -1,4 +1,6 @@
 // miniprogram/pages/home/home.js
+var app = getApp()
+
 Page({
 
   /**
@@ -18,33 +20,45 @@ Page({
     var that = this
     wx.cloud.callFunction({
       name: 'getClassifies',
+      success: res => {
+        if (typeof (res.result) != "undefined") {
+          that.setData({
+            banners: res.result.banners,
+            classifies: res.result.classifies
+          })
+        }
+      },
+      fail: function() {
+        console.log('fail')
+      },
       complete: res => {
-        console.log(res.result)
-        that.setData({
-          banners: res.result.banners,
-          classifies: res.result.classifies
-        })
         wx.hideNavigationBarLoading()
       }
     })
 
-    wx.getSetting({
-      success: res => {
-        console.log(res)
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              console.log(res)
-              that.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                nickName: res.userInfo.nickName
-              })
-            }
-          })
+    if (typeof(app.globalData.userInfo) != "undefined") {
+      this.setData({
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        nickName: app.globalData.userInfo.nickName
+      })
+    } else {
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            wx.getUserInfo({
+              success: res => {
+                that.setData({
+                  avatarUrl: res.userInfo.avatarUrl,
+                  nickName: res.userInfo.nickName
+                })
+                app.globalData.userInfo = res.userInfo
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    }
   },
 
   /**
@@ -103,28 +117,23 @@ Page({
   },
 
   onGetUserInfo: function(options) {
-    console.log(options)
     this.setData({
       avatarUrl: options.detail.userInfo.avatarUrl,
       nickName: options.detail.userInfo.nickName,
     })
+    app.globalData.userInfo = options.detail.userInfo
     this.goMy()
   },
 
   goMy: function() {
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.navigateTo({
-            url: '/pages/my/my',
-          })
-        } else {
-          wx.showToast({
-            title: '请先点击登录',
-          })
-        }
-      }
-    })
+    if (typeof(app.globalData.userInfo) != "undefined") {
+      wx.navigateTo({
+        url: '/pages/my/my',
+      })
+    } else {
+      wx.showToast({
+        title: '请先点击登录',
+      })
+    }
   }
 })

@@ -1,0 +1,17 @@
+<!--miniprogram/pages/manageClassify/manageClassify.wxml-->
+<view class='container'>
+  <block wx:for='{{classifies}}'>
+    <view class='addr' bindtap='onAddrClick' bindlongtap='onAddrLongClick' data-src='{{item}}' bindtouchstart='onTouchStart'>
+      <view class='addr-top'>
+        <text>{{item.receiver}},</text>
+        <text>{{item.phone}}</text>
+      </view>
+      <view class='addr-bottom'>
+        <text>{{item.region}}</text>
+        <text>{{item.addr}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view class='footer' bindtap='goNewAddr'>新增商品分类</view>
+</view>

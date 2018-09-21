@@ -1,0 +1,17 @@
+<!--miniprogram/pages/addrManage/addrManage.wxml-->
+<view class='container'>
+  <block wx:for='{{addrs}}'>
+    <view class='addr' bindtap='onAddrClick' bindlongtap='onAddrLongClick' data-src='{{item}}' bindtouchstart='onTouchStart'>
+      <view class='addr-top'>
+        <text>{{item.receiver}},</text>
+        <text>{{item.phone}}</text>
+      </view>
+      <view class='addr-bottom'>
+        <text>{{item.region}}</text>
+        <text>{{item.addr}}</text>
+      </view>
+    </view>
+  </block>
+
+  <view class='footer' bindtap='goNewAddr'>新增地址</view>
+</view>
