@@ -7,7 +7,6 @@
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
-    "pages/chooseLib/chooseLib",
     "pages/classify/classify",
     "pages/my/my",
     "pages/manageAddr/manageAddr",
