@@ -2,7 +2,6 @@
   "cloud": true,
   "pages": [
     "pages/home/home",
-    "pages/index/index",
     "pages/classify/classify",
     "pages/my/my",
     "pages/manageAddr/manageAddr",
