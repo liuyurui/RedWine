@@ -3,13 +3,17 @@ var filePath
 var fileId
 var classifyName
 var classifyDesc
+var show = false
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    showItems: [
+      {name: 'show', value:'在首页显示'}
+    ]
   },
 
   /**
@@ -96,6 +100,10 @@ Page({
     })
   },
 
+  showChange: function(options) {
+    show = options.detail.value.length > 0
+  },
+
   selectImage: function() {
     var that = this
     wx.chooseImage({
@@ -177,6 +185,7 @@ Page({
         name: classifyName,
         desc: classifyDesc,
         img: fileId,
+        show: show,
       },
       success: res => {
         wx.navigateBack({
@@ -188,7 +197,7 @@ Page({
           title: '联网失败，请稍后重试',
         })
       },
-      complete: function() {
+      complete: function(res) {
         wx.hideLoading()
       }
     })

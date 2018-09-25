@@ -12,7 +12,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const db = wx.cloud.database()
+    wx.showNavigationBarLoading()
+    var that = this
+    db.collection('product_types').orderBy('order', 'desc').get({
+      success: res => {
+        console.log(res)
+        that.setData({
+          classifies: res.data
+        })
+      },
+      fail: e => {
 
+      },
+      complete: function() {
+        wx.hideNavigationBarLoading()
+      }
+    })
   },
 
   /**

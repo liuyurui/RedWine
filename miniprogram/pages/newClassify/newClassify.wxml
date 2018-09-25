@@ -10,16 +10,22 @@
     <input placeholder='分类描述' bindinput='onDescInput' bindfocus='onDescFocus' bindblur='onDescBlur'></input>
   </view>
 
-  <view>
-    <view wx:if='{{!imageId}}' bindtap='selectImage'>选择分类图片</view>
+  <view class='select-image'>
+    <view class='indicator'></view>
+    <text>选择分类图片</text>
   </view>
 
-  <view id='classify-area'>
+  <view id='classify-area' bindtap='selectImage'>
     <view id='classify'>
       <image id='classify-image' src='{{imageId}}'></image>
       <text>{{desc}}</text>
     </view>
   </view>
 
+  <checkbox-group bindchange="showChange">
+    <label class="checkbox" wx:for="{{showItems}}">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </checkbox-group>
   <view class='footer' bindtap='newClassify'>保存</view>
 </view>
