@@ -58,13 +58,8 @@ Page({
   },
 
   goNewClassify: function() {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original']	,
-      sourceType: ['album'],
-      success: function(res) {
-        console.log(res)
-      },
+    wx.navigateTo({
+      url: '/pages/newClassify/newClassify',
     })
   }
 })

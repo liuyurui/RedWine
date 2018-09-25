@@ -175,16 +175,16 @@ Page({
         create_time: date
       },
       success: function() {
-        wx.hideLoading()
         wx.navigateBack({
           delta: 1
         })
       },
       fail: function() {
-        wx.hideLoading()
         wx.showToast({
           title: '联网失败，请稍后重试',
         })
+      }, complete: function() {
+        wx.hideLoading()
       }
     })
   },
