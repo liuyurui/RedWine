@@ -1,2 +1,31 @@
 <!--miniprogram/pages/editClassify/editClassify.wxml-->
-<text>miniprogram/pages/editClassify/editClassify.wxml</text>
+<view class='container'>
+  <view class="line {{nameFocused ? 'focused' : ''}}">
+    <text class='left'>分类名称</text>
+    <input placeholder='分类名称' bindinput='onNameInput' bindfocus='onNameFocus' bindblur='onNameBlur' value='{{name}}'></input>
+  </view>
+
+  <view class="line {{descFocused ? 'focused' : ''}}">
+    <text class='left'>分类描述</text>
+    <input placeholder='分类描述' bindinput='onDescInput' bindfocus='onDescFocus' bindblur='onDescBlur' value='{{desc}}'></input>
+  </view>
+
+  <view class='select-image'>
+    <view class='indicator'></view>
+    <text>选择分类图片</text>
+  </view>
+
+  <view id='classify-area' bindtap='selectImage'>
+    <view id='classify'>
+      <image id='classify-image' src='{{imagePath}}'></image>
+      <text>{{desc}}</text>
+    </view>
+  </view>
+
+  <checkbox-group bindchange="showChange">
+    <label class="checkbox" wx:for="{{showItems}}">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </checkbox-group>
+  <view class='footer' bindtap='editClassify'>保存</view>
+</view>

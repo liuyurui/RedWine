@@ -13,7 +13,9 @@ exports.main = async (event, context) => {
     return res.data
   })
 
-  await db.collection('product_types').get()
+  await db.collection('product_types').orderBy('order', 'desc').where({
+    show: true,
+  }).get()
   .then(res => {
     data.classifies = res.data
     return res.data

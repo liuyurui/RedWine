@@ -4,11 +4,7 @@
     <block id='classify-block' wx:for='{{classifies}}'>
       <view id='classify' bindtap='showClassify' data-src='{{item}}'>
         <image id='classify-image' src='{{item.img}}'></image>
-        <view>
-          <image class='down' src='/images/down.png'></image>
-          <text>{{item.name}}</text>
-          <image class='up' src='/images/up.png' catchtap='doUp' data-src='{{item}}'></image>
-        </view>
+        <text>{{item.name}}</text>
       </view>
     </block>
   </view>

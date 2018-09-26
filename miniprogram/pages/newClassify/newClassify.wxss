@@ -80,7 +80,6 @@
   background-color: #800080;
 }
 checkbox-group {
-  width: 100%;
   margin-top: 36rpx;
   font-size: 36rpx;
 }
