@@ -3,7 +3,7 @@ const cloud = require('wx-server-sdk')
 
 cloud.init()
 
-// 云函数入口函数
+// 云函数3333333333331入口函数
 exports.main = async (event, context) => {
   const db = cloud.database()
   var order = 0
@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
   .catch(err => {
     order = 10000
   })
-  order += 100
+  order += 10000
   return await db.collection('product_types').add({
     data: {
       name: event.name,

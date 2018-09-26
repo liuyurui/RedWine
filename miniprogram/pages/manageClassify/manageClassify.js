@@ -77,5 +77,34 @@ Page({
     wx.navigateTo({
       url: '/pages/newClassify/newClassify',
     })
+  },
+
+  showClassify: function(options) {
+    var data = options.currentTarget.dataset.src
+    wx.navigateTo({
+      url: '/pages/editClassify/editClassify?' + '_id=' + data._id + '&name=' + data.name + '&desc=' + data.desc + '&img=' + data.img + '&show=' + data.show + '&order=' + data.order,
+    })
+  },
+
+  doUp: function(options) {
+    var that = this
+    wx.showLoading({
+      title: '数据加载中',
+    })
+    wx.cloud.callFunction({
+      name: 'upClassify',
+      data: {
+        _id: options.currentTarget.dataset.src._id,
+      },
+      success: res => {
+        that.setData({
+          classifies: res.result.data
+        })
+      },
+      complete: res => {
+        console.log(res)
+        wx.hideLoading()
+      }
+    })
   }
 })

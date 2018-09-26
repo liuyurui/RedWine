@@ -17,7 +17,7 @@
 
   <view id='classify-area' bindtap='selectImage'>
     <view id='classify'>
-      <image id='classify-image' src='{{imageId}}'></image>
+      <image id='classify-image' src='{{imagePath}}'></image>
       <text>{{desc}}</text>
     </view>
   </view>

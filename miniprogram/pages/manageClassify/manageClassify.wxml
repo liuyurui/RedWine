@@ -2,9 +2,13 @@
 <view class='container'>
   <view id='classify-area'>
     <block id='classify-block' wx:for='{{classifies}}'>
-      <view id='classify' bindtap='goProductType' data-src='{{item}}'>
+      <view id='classify' bindtap='showClassify' data-src='{{item}}'>
         <image id='classify-image' src='{{item.img}}'></image>
-        <text>{{item.desc}}</text>
+        <view>
+          <image class='down' src='/images/down.png'></image>
+          <text>{{item.name}}</text>
+          <image class='up' src='/images/up.png' catchtap='doUp' data-src='{{item}}'></image>
+        </view>
       </view>
     </block>
   </view>

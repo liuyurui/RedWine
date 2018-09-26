@@ -13,7 +13,8 @@ Page({
   data: {
     showItems: [
       {name: 'show', value:'在首页显示'}
-    ]
+    ],
+    imagePath: '/images/add.png'
   },
 
   /**
@@ -114,12 +115,12 @@ Page({
         filePath = res.tempFilePaths[0]
         fileId = ''
         that.setData({
-          imageId: filePath,
+          imagePath: filePath,
         })
       },
       fail: function(e) {
         wx.showToast({
-          title: '选择图片失败，请重试',
+          title: '选择图片失败',
         })
       }
     })
@@ -165,7 +166,7 @@ Page({
         fail: e => {
           wx.showToast({
             icon: 'none',
-            title: '新增商品分类失败，请稍后重试',
+            title: '新增商品分类失败',
           })
           wx.hideLoading()
         }
@@ -194,7 +195,7 @@ Page({
       }, 
       fail: e => {
         wx.showToast({
-          title: '联网失败，请稍后重试',
+          title: '联网失败',
         })
       },
       complete: function(res) {
